@@ -1,0 +1,40 @@
+Problem 1, Solution 1 with an array:
+
+ALGORITHM traverse_array
+VAR
+set1, set2 : ARRAY_OF INTEGER[n]; // declaring the arrays and define their length.
+i, j : INTEGER; // declaring the indices for each element in the arrays.
+sum : INTEGER; // declaring the sum variable.
+BEGIN
+set1 := {set1_elements}; // inserting the elements directly in the first array.
+set2 := {set2_elements}; // inserting the elements directly in the second array.
+sum := 0; // initializing the sum to 0.
+Write('Sum of unique elements from both sets : ')
+FOR i FROM 0 TO set1.length-1 STEP 1 DO
+j := 0;
+WHILE j < set2.length DO
+IF set1[i] = set2[j] THEN
+BREAK;
+END_IF
+j := j + 1;
+END_WHILE
+IF j = set2.length THEN
+sum := sum + set1[i];
+END_IF
+END_FOR
+FOR i FROM 0 TO set2.length-1 STEP 1 DO
+j := 0;
+WHILE j < set1.length DO
+IF set2[i] = set1[j] THEN
+BREAK;
+END_IF
+j := j + 1;
+END_WHILE
+IF j = set1.length THEN
+sum := sum + set2[i];
+END_IF
+END_FOR
+Write(sum);
+END
+
+

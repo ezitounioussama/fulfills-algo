@@ -1,0 +1,38 @@
+ALGORITHM sum_distinct_elements_hash_table
+VAR
+set1 : ARRAY_OF INTEGER[n]; // declaring the first set with length n
+set2 : ARRAY_OF INTEGER[m]; // declaring the second set with length m
+map : HASH_TABLE; // hash table to store the elements and their count
+sum, i : INTEGER; // declaring the sum and index for each element in the set
+BEGIN
+set1 := [3, 1, 7, 9]; // initializing the first set with elements
+set2 := [2, 4, 1, 9, 3]; // initializing the second set with elements
+
+// insert all the elements from both the sets with the element as key and its count (in both arrays)
+FOR i FROM 0 TO n-1 STEP 1 DO
+if map.contains(set1[i]) then
+map[set1[i]] := map[set1[i]] + 1;
+else
+map[set1[i]] := 1;
+end_if
+END_FOR
+FOR i FROM 0 TO m-1 STEP 1 DO
+if map.contains(set2[i]) then
+map[set2[i]] := map[set2[i]] + 1;
+else
+map[set2[i]] := 1;
+end_if
+END_FOR
+
+// initialize sum to 0
+sum := 0;
+
+// iterate through the constructed map and sum all the elements with count = 1
+for key in map.keys() do
+if map[key] = 1 then
+sum := sum + key;
+end_if
+end_for
+
+Write("The sum of distinct elements is: ", sum);
+END
